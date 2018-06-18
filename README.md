@@ -1,14 +1,16 @@
 # kript-mind
 
+Very simple Cryptocurrency chatbot.
 
-## Very simple CryptoCurrency chatbot
 
 ### Description
+ Just ask the bot some basic question related to cryptocurrencies. 
 
-It is quite self explanatory. Just ask the bot some basic question related to cryptocurrencies. 
-
+for example:
 - "What is the current price of {cryptocurrency} ?"
-- "What was the price of {cryptocurrency} on {yyyy/mm/dd} ?"
+- "What was the price of {cryptocurrency} on {yyyy-mm-dd} ?"
+
+The bot will be regulary updated with new conversational features.
 
 
 #### Installation
@@ -16,8 +18,11 @@ It is quite self explanatory. Just ask the bot some basic question related to cr
 1. npm install
 2. npm start
 
+#### Author
+Janko Prester - contact me at janko.prester@gmail.com
+
 #### Technical information
-The project was made with React. It uses coinapi.io to get the data.
+App UI was made with React while the logic was made with simple JS. It uses coinapi.io to get the crypto data and string-similarity node package to for processing strings.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
