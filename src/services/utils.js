@@ -48,3 +48,11 @@ export const checkDateFormat = (date) => {
 
     return;
 };
+
+export const randomizeArrayReturn = (array) => {
+    if(!array || !(Array.isArray(array))) {
+        return;
+    }
+
+    return array[Math.floor(Math.random() * array.length)];
+}

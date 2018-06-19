@@ -12,7 +12,7 @@ import {
 } from './chatData';
 
 import { getCryptoValue } from './apiService';
-
+import { randomizeArrayReturn } from './utils';
 import { regx1, regx2, regx3, regx4 } from './constants';
 
 function phraseIsQuestion(phrase) {
@@ -26,7 +26,7 @@ function phraseIsQuestion(phrase) {
 
 function stringSimilaritySearch(phraseToAnalyse) {
     let matchingPhraseObject = _.find(phraseList, (value) => {
-        return stringSimilarity.compareTwoStrings(value.text, phraseToAnalyse) > 0.9;
+        return stringSimilarity.compareTwoStrings(value.text, phraseToAnalyse) > 0.8;
     }) || {};
 
     if (matchingPhraseObject.hasOwnProperty('responseId')) {
@@ -47,7 +47,7 @@ async function categorySearch(semanticObject) {
     if(!_.isEmpty(time) && currency.category) {
         return await getCryptoPriceTime(semanticObject);
     } else if (currency.category && action.getInfo) {
-        return "Information is currently not avialiable but I hope I will have new updates soon.";
+        return "Information is currently not available but I hope I will have some new updates soon.";
     } else if (currency.category) {
         return "Sorry, I dont understand the question. However, I did notice that u mentioned " + currency.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + currency.category + " price?, 'How much was " + currency.category + " price on x.date' or 'what is " +  currency.category + " ?' ... ";
     } else {
@@ -62,13 +62,19 @@ async function getCryptoPriceTime (data) {
 
     data = data || {};
 
-    if (!data.time) {
+    if (!data.time || !cryptoCurrencySymbols[data.currency.category]) {
         return;
     }
 
     const time = data.time || {};
 
-    const cryptoId = cryptoCurrencySymbols[data.currency.category].toUpperCase();
+    const cryptoName = cryptoCurrencySymbols[data.currency.category];
+
+    if (!cryptoName) {
+        return;
+    }
+
+    const cryptoId = cryptoName.toUpperCase();
     let cryptoValue;
 
     cryptoValue = await getCryptoValue(cryptoId, 'USD', time.category === "chooseDate" ? time.keyword : "");
@@ -101,15 +107,6 @@ export async function responseAlogrithm(text) {
 
     return finalResponse;
 }
-
-function randomizeArrayReturn(array) {
-    if(!array || !(Array.isArray(array))) {
-        return;
-    }
-
-    return array[Math.floor(Math.random() * array.length)]
-}
-
 
 function createSemanticObject(phrase) {
     let cleanString = phrase.replace(/[|&;$%@"<>()+?]/g, "").toLowerCase();

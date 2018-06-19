@@ -60,7 +60,7 @@ class App extends Component {
     const errorCheck = checkforErrors(message);
 
     if(errorCheck) {
-      this.setState({ 
+      this.setState({
         errorMsg: errorCheck
       });
 
