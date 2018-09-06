@@ -1,6 +1,6 @@
 # kript-mind
 
-Very simple Cryptocurrency chatbot.
+Cryptocurrency chatbot
 
 
 ### Description
