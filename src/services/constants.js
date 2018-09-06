@@ -1,9 +1,9 @@
 export const options = {
-    "phrase_size": {
-        "min_length": 6,
-        "max_length": 180
-    }
-}
+  "phrase_size": {
+    "min_length": 6,
+    "max_length": 180
+  }
+};
 
 export const regx1 = /\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*/g;
 export const regx2 = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/; // patern match 03/05/2012
