@@ -1,3 +1,8 @@
+.App {
+    max-width: 712px;
+    margin: 0 auto;
+}
+
 .bot {
     border: 1px solid #cccccc;
     margin-left: 20px;

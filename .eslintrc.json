@@ -1,0 +1,56 @@
+{
+  "extends": "eslint-config-react-app",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "camelcase": 0,
+    "no-console": [
+      "warn"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "no-multi-spaces": 2,
+    "no-underscore-dangle": 1,
+    "semi": 2,
+    "key-spacing": 2,
+    "no-trailing-spaces": [
+      2,
+      {
+        "skipBlankLines": false
+      }
+    ],
+    "react/prefer-es6-class": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-curly-spacing": [
+      2,
+      "always"
+    ],
+    "react/prop-types": [
+      1
+    ],
+    "react/no-array-index-key": [
+      1
+    ],
+    "class-methods-use-this": [
+      1
+    ],
+    "no-undef": [
+      1
+    ]
+  }
+}
