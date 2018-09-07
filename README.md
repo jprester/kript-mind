@@ -2,6 +2,7 @@
 
 Cryptocurrency chatbot
 
+Heroku link: https://kript-mind.herokuapp.com/
 
 ### Description
  Just ask the bot some basic question related to cryptocurrencies. 
