@@ -2,6 +2,7 @@
 
 Cryptocurrency chatbot
 
+## Sample App
 Heroku link: https://kript-mind.herokuapp.com/
 
 ### Description

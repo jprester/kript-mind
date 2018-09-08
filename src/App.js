@@ -2,8 +2,11 @@ import React from 'react';
 
 import './App.css';
 import { getMessage, checkforErrors } from './services/chatService';
-import MessageBox from './components/messageBox';
+import MessageInput from './components/messageInput';
 import MessageList from './components/messageList/MessageList';
+import Header from './components/header/';
+import Footer from './components/footer/';
+import Loader from './components/common/Loader';
 
 class App extends React.Component {
   constructor(props) {
@@ -92,12 +95,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className='loader' style={ {'position': 'fixed', 'top': '100px', 'left': '150px', 'display': this.state.loading ? 'block' : 'none'} }><img src={ require('./images/ajax-loader.gif') } alt='spinner'/></div>
-        <h1>Crypto ChatBot</h1>
+        <Loader isLoading={this.state.loading}/>
+        <Header />
         {this.displayMessages()}
-        <MessageBox inputChange={ this.onInputText.bind(this) } keyPress={ this.handleKeyPress } currentText={ this.state.currentMessage } />
+        <MessageInput 
+          inputChange={ this.onInputText.bind(this) }
+          keyPress={ this.handleKeyPress } 
+          currentText={ this.state.currentMessage }
+          onSendBtnClick={this.onSendChatClick}
+        />
         <p>{this.state.errorMsg}</p>
-        <button onClick={ this.onSendChatClick }>Send</button>
+        <Footer />
       </div>
     );
   }

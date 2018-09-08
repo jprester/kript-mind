@@ -1,5 +1,9 @@
 import React from 'react';
 
-export default function Message(props) {
-  return <li className={ props.author }>{props.text}</li>;
-}
+const Message = props => (
+  <li className={ props.author }>
+    <p className="message-text">{ props.text }</p>
+  </li>
+);
+
+export default Message;

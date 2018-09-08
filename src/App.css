@@ -7,3 +7,12 @@
     border: 1px solid #cccccc;
     margin-left: 20px;
 }
+
+.loader {
+    position: 'fixed';
+    top: 100px;
+    left: 150px;
+}
+
+/* temporary put classes here */
+
