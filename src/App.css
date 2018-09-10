@@ -3,9 +3,10 @@
 }
 
 .loader {
-    position: 'fixed';
+    position: fixed;
     top: 100px;
-    left: 150px;
+    left: 50%;
+    right: 50%;
 }
 
 .main-container {
@@ -168,40 +169,14 @@ h1 {
     position: relative;
 }
 
-.message-input-container textarea {
-    border-top: 0px none;
-    border-left: 0px none;
-    border-right: 0px none;
-    border-bottom: 1px solid #CCCCCC;
+.form-control {
+    margin-top: 40px;
     width: 80%;
-    margin-left: 20px;
-    margin-top: 20px;
-    font-size: 16px;
-    min-height: 50px;
-    font-weight: 300;
-    border-top: 1px solid #eeeeee;
-    padding-top: 5px;
 }
 
-::-webkit-input-placeholder,
-:-ms-input-placeholder,
-::-moz-placeholder,
-:-moz-placeholder,
-::placeholder  {
-    font-style: italic;
+.text-input {
     font-weight: 300;
-    font-size: 14px;
-    color: #cccccc;
-    opacity: 1;
-}
-
-.message-input-container textarea:focus,
-.message-input-container textarea:visited,
-.message-input-container textarea:active,
-.message-input-container textarea:hover {
-    border: 0px none;
-    border-top: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
+    margin-top: 35px;
 }
 
 .message-input-container button {
@@ -228,6 +203,7 @@ h1 {
     font-size: 12px;
     font-weight: 300;
     left: 30px;
+    text-align: center;
 }
 
 footer {
@@ -237,6 +213,18 @@ footer {
 .footer-text {
     text-align: right;
     font-size: 10px;
+}
+
+
+@media only screen and (max-width: 558px) {
+    .header-content-logo {
+        width: 100%;
+    }
+
+    .form-control {
+        margin-top: 40px;
+        max-width: 60%;
+    }
 }
 
 

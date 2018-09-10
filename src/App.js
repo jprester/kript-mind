@@ -7,7 +7,7 @@ import MessageList from './components/messageList/MessageList';
 import Header from './components/header/';
 import Footer from './components/footer/';
 import Loader from './components/common/Loader';
-import { msgAuthor } from './components/common/Constants.js';
+import { msgAuthor, messages } from './components/common/Constants.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,8 +49,29 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    if (!this.state.currentMessage) {
+      this.addInitialMessage();
+    }
+  }
+
+  addInitialMessage () {
+    if (!this.state.messages.length) {
+      this.setState({
+        errorMsg: '',
+        loading: true
+      });
+      setTimeout(() => {
+        this.addMessage(msgAuthor.bot, messages.initialMessage);
+        this.setState({
+          loading: false
+        });
+      }, 400);
+    }
+  }
+
   responseDelay() {
-    setTimeout(this.botResponse.bind(this), 300);
+    setTimeout(this.botResponse.bind(this), 400);
   }
 
   async botResponse() {
@@ -82,7 +103,6 @@ class App extends React.Component {
     });
 
     this.addMessage(msgAuthor.user, message);
-    // .then(() => this.botResponse());
     this.responseDelay();
   };
 
