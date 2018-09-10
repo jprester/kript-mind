@@ -13,6 +13,7 @@
     width: 100%;
     max-width: 770px;
     margin: 0px auto 0px auto;
+    position: relative;
 }
 
 /* temporary put classes here */
@@ -165,9 +166,6 @@ h1 {
 .author-name, .message-time, .message-date {
     font-weight: 300;
 }
-.message-input-container {
-    position: relative;
-}
 
 .form-control {
     margin-top: 40px;
@@ -190,6 +188,7 @@ h1 {
     cursor: pointer;
     position: absolute;
     top: 30px;
+    right: 50px;
     background-color: #ffffff;
 }
 
@@ -215,6 +214,16 @@ footer {
     font-size: 10px;
 }
 
+@media only screen and (max-width: 769px) {
+    .text-input {
+        margin-left: 20px;
+    }
+
+    .message-input-container button {
+        right: 35px;
+    }
+}
+
 
 @media only screen and (max-width: 558px) {
     .header-content-logo {
@@ -222,8 +231,25 @@ footer {
     }
 
     .form-control {
-        margin-top: 40px;
-        max-width: 60%;
+        margin-left: 20px;
+    }
+
+    .text-input {
+        margin-left: 20px;
+    }
+
+    .message-input-container button {
+        right: 10px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .text-input {
+        margin-left: 20px;
+    }
+
+    .form-control {
+        width: 70%;
     }
 }
 
