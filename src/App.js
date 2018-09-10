@@ -7,6 +7,7 @@ import MessageList from './components/messageList/MessageList';
 import Header from './components/header/';
 import Footer from './components/footer/';
 import Loader from './components/common/Loader';
+import { msgAuthor } from './components/common/Constants.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,14 +31,20 @@ class App extends React.Component {
 
   async addMessage (source, text) {
     const lastItem = this.state.messages[this.state.messages.length - 1];
+    const time = new Date();
+    const date = time.getUTCDate() + "/" + (time.getMonth() + 1) + "/" + time.getFullYear();
+    const hourAndMinute = time.getHours() + ":" + time.getMinutes();
+
+    console.log("what is date : ", date);
 
     this.setState({
       currentMessage: "",
       messages: [...this.state.messages, {
         id: lastItem ? lastItem.id + 1 : 0,
         content: text,
-        timestamp: Date.now(),
-        author: source || "bot"
+        date: date,
+        hourAndMinute: hourAndMinute,
+        author: source || msgAuthor.bot
       }]
     });
   }
@@ -49,7 +56,7 @@ class App extends React.Component {
   async botResponse() {
     if (this.state.messages[this.state.messages.length - 1]) {
       const botMessage = await getMessage(this.state.messages[this.state.messages.length - 1].content);
-      this.addMessage("bot", botMessage);
+      this.addMessage(msgAuthor.bot, botMessage);
     }
 
     this.setState({
@@ -74,7 +81,7 @@ class App extends React.Component {
       loading: true
     });
 
-    this.addMessage('user', message);
+    this.addMessage(msgAuthor.user, message);
     // .then(() => this.botResponse());
     this.responseDelay();
   };
@@ -95,16 +102,20 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Loader isLoading={this.state.loading}/>
+        <Loader isLoading={ this.state.loading }/>
         <Header />
-        {this.displayMessages()}
-        <MessageInput 
+        <div className="chat-content">
+          <div className="main-container">
+            {this.displayMessages()}
+          </div>
+        </div>
+        <MessageInput
           inputChange={ this.onInputText.bind(this) }
-          keyPress={ this.handleKeyPress } 
+          keyPress={ this.handleKeyPress }
           currentText={ this.state.currentMessage }
-          onSendBtnClick={this.onSendChatClick}
+          onSendBtnClick={ this.onSendChatClick }
+          errorMsg= { this.state.errorMsg }
         />
-        <p>{this.state.errorMsg}</p>
         <Footer />
       </div>
     );

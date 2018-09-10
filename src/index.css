@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i,700');
 
 body {
   font-family: 'Lato', sans-serif;
@@ -6,4 +6,9 @@ body {
   margin: 0;
   padding:0;
   background-color: #ECF4F3;
+  color: #555151;
+}
+
+a, input:focus, textarea:focus {
+  outline: none;
 }

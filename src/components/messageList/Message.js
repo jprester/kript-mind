@@ -1,9 +1,20 @@
 import React from 'react';
 
-const Message = props => (
-  <li className={ props.author }>
-    <p className="message-text">{ props.text }</p>
-  </li>
-);
+import MessageStatus from './MessageStatus';
+import MessageContent from './MessageContent';
+
+const Message = props => {
+  const { author } = props;
+
+  if (props && props.text) {
+    console.log("props of the message: ", props);
+    return (
+      <li className={ author }>
+        <MessageStatus authorType={ author } date={ props.date } hourAndMinute={ props.hourAndMinute }/>
+        <MessageContent messageText={ props.text } />
+      </li>
+    );
+  }
+};
 
 export default Message;

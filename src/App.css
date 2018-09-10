@@ -1,11 +1,5 @@
 .App {
-    max-width: 712px;
     margin: 0 auto;
-}
-
-.bot {
-    border: 1px solid #cccccc;
-    margin-left: 20px;
 }
 
 .loader {
@@ -14,5 +8,235 @@
     left: 150px;
 }
 
+.main-container {
+    width: 100%;
+    max-width: 770px;
+    margin: 0px auto 0px auto;
+}
+
 /* temporary put classes here */
+.header-container {
+    height: 72px;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+}
+
+.header-content-logo {
+    width: 40%;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: #555151;
+    margin-bottom: 5px;
+}
+
+.logo-text {
+    bottom: 5px;
+    position: relative;
+    font-weight: 700;
+}
+
+.logo-color-1 {
+    color: #57A99A;
+}
+
+.logo-color-2 {
+    color: #555151;
+}
+
+.header-content-navigation {
+    margin-left: auto;
+    width: 40%;
+}
+
+.navigation-links {
+    display: flex;
+    margin-top: 35px;
+}
+
+.navigation-links li {
+    margin-left: auto;
+    margin-right: 20px;
+    list-style: none;
+}
+
+
+.navigation-links li a {
+    color: #57A99A;
+    text-decoration: none;
+    display: none; /* dont display links until u set up routers*/
+}
+
+.navigation-links li a:hover {
+    color: #555151;
+}
+
+.chat-content {
+    min-height: 300px;
+}
+
+.message-input-container {
+    height: 111px;
+    width: 100%;
+}
+
+.grid-container {
+    max-width: 770px;
+}
+
+.grid-column-1-2, .grid-column-1-3 {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-column-1-2 {
+    width: 49%;
+}
+
+.grid-column-1-3 {
+    width: 32%;
+}
+
+.message-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message-list li {
+    display: flex;
+    margin: 30px 0px;
+}
+
+.message-list li.bot {
+    -webkit-flex-direction: row-reverse; /* Safari 6.1+ */
+    flex-direction: row-reverse; 
+}
+
+.bot .message-text  {
+    border: 1px solid #cccccc;
+    background-color: #FFFFFF;
+    color: #555151;
+}
+
+.message-text {
+    width: 360px;
+    min-height: 20px;
+    padding: 10px 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: #555151;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    color: #ECF4F3;
+    margin: 4px 10px;
+}
+
+.message-status {
+    padding: 6px;
+}
+
+.message-status p {
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.bot .message-status {
+    border-left: 1px solid #CCCCCC;
+    border-right: 0px none;
+}
+
+.user .message-status {
+    border-right: 1px solid #CCCCCC;
+    border-left: 0px none;
+}
+
+.message-input-container {
+    background-color: #ffffff;
+}
+
+.author-name, .message-time, .message-date {
+    font-weight: 300;
+}
+.message-input-container {
+    position: relative;
+}
+
+.message-input-container textarea {
+    border-top: 0px none;
+    border-left: 0px none;
+    border-right: 0px none;
+    border-bottom: 1px solid #CCCCCC;
+    width: 80%;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    min-height: 50px;
+    font-weight: 300;
+    border-top: 1px solid #eeeeee;
+    padding-top: 5px;
+}
+
+::-webkit-input-placeholder,
+:-ms-input-placeholder,
+::-moz-placeholder,
+:-moz-placeholder,
+::placeholder  {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    color: #cccccc;
+    opacity: 1;
+}
+
+.message-input-container textarea:focus,
+.message-input-container textarea:visited,
+.message-input-container textarea:active,
+.message-input-container textarea:hover {
+    border: 0px none;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.message-input-container button {
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 1px solid #76DBD1;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #76DBD1;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    background-color: #ffffff;
+}
+
+.message-input-container button:hover {
+    opacity: 0.5;
+}
+
+.error-msg {
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    left: 30px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+.footer-text {
+    text-align: right;
+    font-size: 10px;
+}
+
 
