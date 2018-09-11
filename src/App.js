@@ -122,7 +122,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Loader isLoading={ this.state.loading }/>
         <Header />
         <div className="chat-content">
           <div className="main-container">
@@ -135,6 +134,7 @@ class App extends React.Component {
           currentText={ this.state.currentMessage }
           onSendBtnClick={ this.onSendChatClick }
           errorMsg= { this.state.errorMsg }
+          isLoading={ this.state.loading }
         />
         <Footer />
       </div>

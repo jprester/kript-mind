@@ -1,8 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
+
+import Loader from '../../components/common/Loader';
 
 const styles = theme => ({
   cssUnderline: {
@@ -18,6 +19,7 @@ const MessageInput = (props) => {
   return (
     <div className="message-input-container">
       <div className="main-container">
+        <Loader isLoading={ props.isLoading } />
         <FormControl className="form-control">
           <Input id="name-simple"
             className="text-input"

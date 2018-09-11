@@ -3,10 +3,17 @@
 }
 
 .loader {
-    position: fixed;
-    top: 100px;
-    left: 50%;
-    right: 50%;
+    position: absolute;
+    bottom: 60px;
+    width: 100px;
+    text-align: center;
+    left: 43%;
+}
+
+.loader-text {
+    font-size: 10px;
+    color: #76DBD1;
+    margin: 2px 0px 2px 0px;
 }
 
 .main-container {
@@ -161,6 +168,7 @@ h1 {
     height: 80px;
     width: 100%;
     background-color: #ffffff;
+    margin-top: 50px;
 }
 
 .form-control {
@@ -234,6 +242,10 @@ footer {
         width: 100%;
     }
 
+    .loader {
+        left: 40%;
+    }
+
     .form-control {
         margin-left: 20px;
     }
@@ -251,6 +263,11 @@ footer {
     .text-input {
         margin-left: 20px;
     }
+
+    .loader {
+        left: 37%;
+    }
+
 
     .message-input-container button {
         padding: 8px;
