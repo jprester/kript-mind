@@ -165,7 +165,7 @@ h1 {
 }
 
 .message-input-container {
-    height: 80px;
+    height: 85px;
     width: 100%;
     background-color: #ffffff;
     margin-top: 50px;
@@ -201,12 +201,13 @@ h1 {
 }
 
 .error-msg {
-    position: absolute;
-    bottom: 10px;
+    position: relative;
     font-size: 12px;
     font-weight: 300;
-    left: 30px;
-    text-align: center;
+    font-style: italic;
+    left: 20px;
+    width: 100%;
+    top: 5px;
 }
 
 footer {
@@ -254,6 +255,10 @@ footer {
         margin-left: 20px;
     }
 
+    .error-msg {
+        width: 250px;
+    }
+
     .message-input-container button {
         right: 10px;
     }
@@ -268,6 +273,10 @@ footer {
         left: 37%;
     }
 
+    .message-input-container {
+        height: 100px;
+    }
+
 
     .message-input-container button {
         padding: 8px;
@@ -277,9 +286,6 @@ footer {
         width: 70%;
     }
 
-    .message-input-container {
-        height: 70px;
-    }
 }
 
 
