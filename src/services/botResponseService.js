@@ -93,7 +93,7 @@ async function getCryptoPriceTime (data) {
     startText = "On " + startText;
   }
 
-  return `${startText} price of ${data.currency.category} ${tense} ${cryptoValue} $`;
+  return `${startText} price of ${data.currency.category} ${tense} ${Math.round(cryptoValue * 100) / 100} $`;
 }
 
 export async function responseAlogrithm(text) {

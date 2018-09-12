@@ -6,7 +6,6 @@ import MessageInput from './components/messageInput';
 import MessageList from './components/messageList/MessageList';
 import Header from './components/header/';
 import Footer from './components/footer/';
-import Loader from './components/common/Loader';
 import { msgAuthor, messages } from './components/common/Constants.js';
 
 class App extends React.Component {
@@ -34,8 +33,6 @@ class App extends React.Component {
     const time = new Date();
     const date = time.getUTCDate() + "/" + (time.getMonth() + 1) + "/" + time.getFullYear();
     const hourAndMinute = time.getHours() + ":" + time.getMinutes();
-
-    console.log("what is date : ", date);
 
     this.setState({
       currentMessage: "",

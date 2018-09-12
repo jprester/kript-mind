@@ -7,7 +7,6 @@ const Message = props => {
   const { author } = props;
 
   if (props && props.text) {
-    console.log("props of the message: ", props);
     return (
       <li className={ author }>
         <MessageStatus authorType={ author } date={ props.date } hourAndMinute={ props.hourAndMinute }/>

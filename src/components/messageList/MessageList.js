@@ -4,7 +4,6 @@ import Message from './Message';
 
 const MessageList = props => {
   if (props.messages.length) {
-    console.log("props message contents: ", props.messages);
     return (
       <ul className="message-list">
         {props.messages && props.messages.map(message =>
