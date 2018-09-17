@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import _ from 'lodash';
 
 import { coinApiAddress, coinApiKey, coinApiVersion} from './apiConfig';
 
@@ -34,4 +35,24 @@ export async function getCryptoList() {
   const cryptoList = await cryptoListingsPromise.json();
 
   return cryptoList;
+};
+
+export async function getWikiText (info) {
+  let url = `https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&exintro&explaintext&exsentences=5&exsectionformat=raw&redirects=1&titles=${info}`;
+
+  const cryptoTextPromise = await fetch(url, { method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const resultObject = await cryptoTextPromise.json();
+
+  const cryptoText = _.get(_.find(resultObject.query.pages), "extract");
+
+  if (cryptoText && cryptoText.length > 30) {
+    return cryptoText;
+  } else {
+    return `I didnt found anything about ${info}, sorry.`;
+  }
 };

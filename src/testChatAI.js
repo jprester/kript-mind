@@ -115,14 +115,20 @@ function stringSimilaritySearch(phraseToAnalyse) {
 }
 
 async function categorySearch(semanticObject) {
+  semanticObject = semanticObject || {};
+
   let time = semanticObject.time || {};
   let action = semanticObject.action || {};
   let currency = semanticObject.currency || {};
 
+  console.log("----- THIS IS THE ACTION: ", action);
+
+  console.log("----- THIS IS THE CURRENCY: ", currency);
+
   if(!_.isEmpty(time) && currency.category) {
     return await getCryptoPriceTime(semanticObject);
-  } else if (currency.category && action.getInfo) {
-    return "Information is currently not avialiable but I hope I will have new updates soon.";
+  } else if (currency.category && action.category) {
+    return getWikiText(currency.category);
   } else if (currency.category) {
     return "Sorry, I dont understand the question. However, I did notice that u mentioned " + currency.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + currency.category + " price?, 'How much was " + currency.category + " price on x.date' or 'what is " + currency.category + " ?' ... ";
   } else {
@@ -202,6 +208,20 @@ async function getCryptoValue(cryptoType, fiatType, chooseDate) {
   return cryptoValue.rate || '';
 };
 
+async function getWikiText(info) {
+  let url = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&exsectionformat=raw&redirects=1&titles=${info}`;
+
+  const cryptoTextPromise = await fetch(url, { method: 'GET', headers: {
+    'Content-Type': 'application/json'}
+  });
+
+  const cryptoText = await cryptoTextPromise.json();
+
+  return _.get(_.find(cryptoText.query.pages), "extract");
+
+  // console.log("----- Wiki text for coin query: ", _.get(_.find(cryptoText.query.pages), "extract"));
+};
+
 async function getCryptoPriceTime (data) {
   if (!data) {
     return;
@@ -262,15 +282,17 @@ function randomizeArrayReturn(array) {
 
 
 function createSemanticObject(phrase) {
-  let cleanString = phrase.replace(/[|&;$%@"<>()+?]/g, "").toLowerCase();
+  if(phrase) {
+    let cleanString = phrase.replace(/[|&;$%@"<>()+?]/g, "").toLowerCase();
 
-  return {
-    time: searchResult(timeCollection, cleanString, true),
-    action: searchResult(actionsCollection, cleanString) || "",
-    isQuestion: phraseIsQuestion(phrase),
-    currency: searchResult(cryptoCurrencyCollection, cleanString) || "",
-    contentType: "sentence" || "list" || "table"
-  };
+    return {
+      time: searchResult(timeCollection, cleanString, true),
+      action: searchResult(actionsCollection, cleanString) || "",
+      isQuestion: phraseIsQuestion(phrase),
+      currency: searchResult(cryptoCurrencyCollection, cleanString) || "",
+      contentType: "sentence" || "list" || "table"
+    };
+  }
 }
 
 function scanForDate(text) {

@@ -43,9 +43,23 @@ export const cryptoCurrencyCollection = [
   {"bitcoin": ["btc", "bitcoin", "bcoin", "bitcoins"]},
   {"ripple": ["xlm", "ripple", "ripples"]},
   {"cryptocurrency": ["crypto", "cryptos", "cryptocurrency", "cryptocurrencies"]},
+  {"crypto_exchange": ["exchange", "crypto marketplace", "cryptocurrency exchange", "crypto exchange"]},
   {"bitcoin_cash": ["bch", "bitcoin cash", "bcash", "btrash"]},
   {"stellar": ["stellar", "stellar lumens", "xml", "lumens"]},
-  {"cardano": ["cardano", "ada"]}
+  {"cardano": ["cardano", "ada"]},
+  {"stellar": ["stellar", "xml", "stellar lumens", "lumens"]},
+  {"eos": ["eos"]},
+  {"tether": ["tether", "usdt"]},
+  {"monero": ["monero", "xmr"]},
+  {"dash": ["dash"]},
+  {"iota": ["miota", "iota"]},
+  {"tron": ["trx", "tron"]},
+  {"neo": ["neo"]},
+  {"tezos": ["xtz", "tezos"]},
+  {"binance_coin": ["BNB", "bnb", "binance coin"]},
+  {"nem": ["nem", "xem"]},
+  {"vechain": ["vechain", "cet"]},
+  {"dogecoin": ["dogecoin", "doge"]}
 ];
 
 export const cryptoCurrencySymbols = {
@@ -56,7 +70,18 @@ export const cryptoCurrencySymbols = {
   "bitcoin_cash": "bch",
   "cardano": "ada",
   "stellar": "xml",
-  "eos": "eos"
+  "eos": "eos",
+  "tether": "usdt",
+  "monero": "xmr",
+  "dash": "dash",
+  "iota": "miota",
+  "tron": "trx",
+  "neo": "neo",
+  "tezos": "xtz",
+  "binance_coin": "bnb",
+  "nem": "xem",
+  "vechain": "vet",
+  "dogecoin": "doge"
 };
 
 export const actionsCollection = [

@@ -11,7 +11,7 @@ import {
   timeCollection
 } from './chatData';
 
-import { getCryptoValue } from './apiService';
+import { getCryptoValue, getWikiText } from './apiService';
 import { randomizeArrayReturn } from './utils';
 import { regx1, regx2, regx3, regx4 } from './constants';
 
@@ -46,8 +46,14 @@ async function categorySearch(semanticObject) {
 
   if(!_.isEmpty(time) && currency.category) {
     return await getCryptoPriceTime(semanticObject);
-  } else if (currency.category && action.getInfo) {
-    return "Information is currently not available but I hope I will have some new updates soon.";
+  } else if (currency.category && action.category) {
+    try {
+      return await getWikiText(currency.category);
+    } catch(err) {
+      console.error(err);
+      return "Sorry, I couldnt get this information.";
+
+    }
   } else if (currency.category) {
     return "Sorry, I dont understand the question. However, I did notice that u mentioned " + currency.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + currency.category + " price?, 'How much was " + currency.category + " price on x.date' or 'what is " + currency.category + " ?' ... ";
   } else {
@@ -109,15 +115,17 @@ export async function responseAlogrithm(text) {
 }
 
 function createSemanticObject(phrase) {
-  let cleanString = phrase.replace(/[|&;$%@"<>()+?]/g, "").toLowerCase();
+  if(phrase) {
+    let cleanString = phrase.replace(/[|&;$%@"<>()+?]/g, "").toLowerCase();
 
-  return {
-    time: searchResult(timeCollection, cleanString, true),
-    action: searchResult(actionsCollection, cleanString) || "",
-    isQuestion: phraseIsQuestion(phrase),
-    currency: searchResult(cryptoCurrencyCollection, cleanString) || "",
-    contentType: "sentence" || "list" || "table"
-  };
+    return {
+      time: searchResult(timeCollection, cleanString, true),
+      action: searchResult(actionsCollection, cleanString) || "",
+      isQuestion: phraseIsQuestion(phrase),
+      currency: searchResult(cryptoCurrencyCollection, cleanString) || "",
+      contentType: "sentence" || "list" || "table"
+    };
+  }
 }
 
 function scanForDate(text) {
