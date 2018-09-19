@@ -6,7 +6,8 @@ import MessageInput from './components/messageInput';
 import MessageList from './components/messageList/MessageList';
 import Header from './components/header/';
 import Footer from './components/footer/';
-import { msgAuthor, messages } from './components/common/Constants.js';
+import { msgAuthor } from './components/common/Constants.js';
+import { initialMessages } from './services/chatData.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class App extends React.Component {
         loading: true
       });
       setTimeout(() => {
-        this.addMessage(msgAuthor.bot, messages.initialMessage);
+        this.addMessage(msgAuthor.bot, initialMessages[0]);
         this.setState({
           loading: false
         });

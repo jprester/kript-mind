@@ -16,18 +16,24 @@ export const phraseList = [
   {"phraseId": "p13", "text": "do cryptos make sense", "responseId": "r4"},
   {"phraseId": "p14", "text": "do cryptos have a future", "responseId": "r2"},
   {"phraseId": "p15", "text": "what are the most important facts about cryptocurrencies", "responseId": "r2"},
-  {"phraseId": "p16", "text": "how can I get cryptos", "responseId": "r2"},
-  {"phraseId": "p17", "text": "where can I buy cryptos", "responseId": "r2"},
-  {"phraseId": "p18", "text": "what is the best exchange for buying cryptos", "responseId": "r2"},
-  {"phraseId": "p19", "text": "what is the best exchange for buying cryptos", "responseId": "r2"},
+  {"phraseId": "p16", "text": "how can I get cryptos", "responseId": "r8"},
+  {"phraseId": "p17", "text": "where can I buy cryptos", "responseId": "r8"},
+  {"phraseId": "p17", "text": "where can I buy bitcoin", "responseId": "r8"},
+  {"phraseId": "p18", "text": "what is the best exchange for buying cryptos", "responseId": "r8"},
   {"phraseId": "p20", "text": "what is your name", "responseId": "r4"},
   {"phraseId": "p21", "text": "what are you", "responseId": "r5"},
   {"phraseId": "p21", "text": "who are you", "responseId": "r5"},
   {"phraseId": "p22", "text": "what can you do", "responseId": "r7"},
-  {"phraseId": "p23", "text": "what kind of info can you give me", "responseId": "r7"}
+  {"phraseId": "p23", "text": "what kind of info can you give me", "responseId": "r7"},
+  {"phraseId": "p24", "text": "where can I buy bitcoin", "responseId": "r8"},
+  {"phraseId": "p25", "text": "where can I buy ethereum", "responseId": "r8"},
+  {"phraseId": "p26", "text": "how can I buy bitcoin", "responseId": "r8"},
+  {"phraseId": "p27", "text": "how can I buy ethereum", "responseId": "r8"},
 ];
 
 export const failMessages = ["Sorry but I didnt get this.", "I did not understand your message.", "What did u say?", "Unfortunately my programmer was too lazy, and he didnt anticipate this question. Try asking something else."];
+
+export const initialMessages = ["Welcome to the KriptoMind chatbot app. You can ask me for information related to cryptocurrencies. Example: 'What is current Bitcoin price?', 'What was the eth price on 12.4.2017'"];
 
 export const responseList = [
   {"responseId": "r1", "responseList": ["I am ok", "I am very well, thanks for asking"]},
@@ -35,7 +41,8 @@ export const responseList = [
   {"responseId": "r3", "responseList": ["Sure I can give you some crypto information", "let me know what you are interested about", "I offer wide range of services"]},
   {"responseId": "r4", "responseList": ["I am crypto bot", "my name is crypto bot", "it is: crypto bot"]},
   {"responseId": "r5", "responseList": ["I am a cryptocurrency chatbot", "I am a bot that can give u info about cryptocurrencies"]},
-  {"responseId": "r7", "responseList": ["Well, you can ask me things like: 'what is the current price of bitcoin?' 'What was ethereum price on (yyyy)-(mm)-(dd) ' etc.. "]}
+  {"responseId": "r7", "responseList": ["Well, you can ask me things like: 'what is the current price of bitcoin?' 'What was ethereum price on (yyyy)-(mm)-(dd) ' etc.. "]},
+  {"responseId": "r8", "responseList": ["There are many ways you can buy cryptocurrencies. The most convinient one is to use cryptocurrency exchanges and buy crypto like bitcoin or ethereum with money from your credit card or with wire transfer from the bank. Some popular exchanges that offer fiat money buying are: CoinBase.com, Cex.io or Kraken.com. Alternatively you can buy crypto from specialised crypto ATMs, or directly from people who offer to sell them."]}
 ];
 
 export const cryptoCurrencyCollection = [
@@ -86,7 +93,7 @@ export const cryptoCurrencySymbols = {
 
 export const actionsCollection = [
   {"getPrice": ["price", "value", "worth", "pay"]},
-  {"getInfo": ["about", "info", "information", "how", "where", "what is"]}
+  {"getInfo": ["about", "info", "information", "what is"]}
 ];
 
 export const timeCollection = [
