@@ -1,4 +1,4 @@
-import { options } from './constants';
+import { options } from '../helpers/constants';
 
 import { responseAlogrithm } from './botResponseService';
 
@@ -16,7 +16,7 @@ export const checkforErrors = text => {
   }
 
   if(typeof text !== "string") {
-    return "Please write text";
+    return "Please write text.";
   }
 
   if(/[~`!#$%\^&*+=\[\]\\';/{}|\\:]/g.test(text)) {
@@ -30,7 +30,7 @@ export const checkforErrors = text => {
   return "";
 };
 
-export async function getMessage (message) {
+export async function getMessage(message) {
   if(!message && typeof message !== "string") {
     return "Message is empty or in incorrect format.";
   }

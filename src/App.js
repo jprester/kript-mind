@@ -7,7 +7,7 @@ import MessageInput from './components/messageInput';
 import MessageList from './components/messageList/MessageList';
 import Header from './components/header/';
 import Footer from './components/footer/';
-import { msgAuthor } from './components/common/Constants.js';
+import { msgAuthor } from './helpers/constants.js';
 import { initialMessages } from './services/chatData.js';
 
 class App extends React.Component {

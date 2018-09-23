@@ -54,9 +54,9 @@ MessageInput.propTypes = {
   classes: PropTypes.shape({}).isRequired,
   currentText: PropTypes.string,
   errorMsg: PropTypes.string,
-  inputChange: PropTypes.func.isRequired,
+  inputChange: PropTypes.func,
   isLoading: PropTypes.bool,
-  keyPress: PropTypes.func.isRequired,
-  onSendBtnClick: PropTypes.func.isRequired
+  keyPress: PropTypes.func,
+  onSendBtnClick: PropTypes.func
 };
 

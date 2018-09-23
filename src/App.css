@@ -223,7 +223,12 @@ footer {
     margin-top: 20px;
 }
 
-.footer-text {
+.footer-text-left {
+    font-size: 8px;
+    font-style: italic;
+}
+
+.footer-text-right {
     text-align: right;
     font-size: 10px;
 }

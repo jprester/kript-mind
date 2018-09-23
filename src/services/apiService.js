@@ -2,8 +2,7 @@ import fetch from 'node-fetch';
 import _ from 'lodash';
 
 import { coinApiAddress, coinApiKey, coinApiVersion} from './apiConfig';
-
-import { checkDateFormat } from './utils';
+import { checkDateFormat } from '../helpers/utils';
 
 export async function getCryptoValue(cryptoType, fiatType, chooseDate) {
   let url = `${coinApiAddress}/${coinApiVersion}/exchangerate/${cryptoType}/${fiatType}`;

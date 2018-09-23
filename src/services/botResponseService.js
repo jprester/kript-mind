@@ -12,8 +12,8 @@ import {
 } from './chatData';
 
 import { getCryptoValue, getWikiText } from './apiService';
-import { randomizeArrayReturn } from './utils';
-import { regx1, regx2, regx3, regx4 } from './constants';
+import { randomizeArrayReturn } from '../helpers/utils';
+import { regx1, regx2, regx3, regx4 } from '../helpers/constants';
 
 function phraseIsQuestion(phrase) {
   let lastElement = phrase.substr(phrase.length - 1);
