@@ -1,12 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Message from './Message';
 
 const MessageList = props => {
-  if (props.messages.length) {
+  const { messages } = props;
+
+  if (messages.length) {
     return (
       <ul className="message-list">
-        {props.messages && props.messages.map(message =>
+        {messages && messages.map(message =>
           <Message
             author={ message.author }
             date={ message.date }
@@ -20,3 +23,7 @@ const MessageList = props => {
 };
 
 export default MessageList;
+
+MessageList.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};

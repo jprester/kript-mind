@@ -46,7 +46,7 @@ const responseList = [
   {"responseId": "r1", "responseList": ["I am ok", "I am very well, thanks for asking"]},
   {"responseId": "r2", "responseList": ["greetings", "hello dear human", "Hi! How can I be of service?"]},
   {"responseId": "r3", "responseList": ["Sure I can give you some crypto information", "let me know what you are interested about", "I offer wide range of services"]},
-  {"responseId": "r4", "responseList": ["I am crypto bot", "my name is crypto bot", "it is: crypto bot"]},
+  {"responseId": "r4", "responseList": ["I am Kript Mind, cryptocurrency chatbot", "my name is Kript Mind, cryptocurrency chatbot", "it is: Kript Mind, cryptocurrency chatbot"]},
   {"responseId": "r5", "responseList": ["I am a cryptocurrency chatbot", "I am a bot that can give u info about cryptocurrencies"]},
   {"responseId": "r7", "responseList": ["So you can ask me: 'what is the current price of bitcoin?' 'Where I can buy bitcoin and stuff' etc.. "]}
 ];

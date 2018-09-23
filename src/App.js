@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './App.css';
 import { getMessage, checkforErrors } from './services/chatService';
@@ -141,3 +142,16 @@ class App extends React.Component {
 }
 
 export default App;
+
+App.propTypes = {
+  currentText: PropTypes.string,
+  errorMsg: PropTypes.string,
+  isLoading: PropTypes.bool,
+  keyPress: PropTypes.func,
+  loading: PropTypes.bool,
+  onSendBtnClick: PropTypes.func
+};
+
+App.defaultProps = {
+  loading: false
+};

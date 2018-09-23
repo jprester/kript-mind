@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
+import PropTypes from 'prop-types';
 
 import Loader from '../../components/common/Loader';
 
@@ -14,12 +15,20 @@ const styles = theme => ({
 });
 
 const MessageInput = (props) => {
-  const { classes } = props;
+  const {
+    classes,
+    isLoading,
+    inputChange,
+    currentText,
+    onSendBtnClick,
+    errorMsg,
+    keyPress
+  } = props;
 
   return (
     <div className="message-input-container">
       <div className="main-container">
-        <Loader isLoading={ props.isLoading } />
+        <Loader isLoading={ isLoading } />
         <FormControl className="form-control">
           <Input id="name-simple"
             className="text-input"
@@ -28,16 +37,26 @@ const MessageInput = (props) => {
               underline: classes.cssUnderline,
             } }
             placeholder="Type something ..."
-            onChange={ props.inputChange }
-            onKeyPress={ props.keyPress }
-            value={ props.currentText }/>
+            onChange={ inputChange }
+            onKeyPress={ keyPress }
+            value={ currentText }/>
         </FormControl>
-        <button onClick={ props.onSendBtnClick }>Send</button>
-        <div className="error-msg">{ props.errorMsg }</div>
+        <button onClick={ onSendBtnClick }>Send</button>
+        <div className="error-msg">{ errorMsg }</div>
       </div>
     </div>
   );
 };
 
 export default withStyles(styles)(MessageInput);
+
+MessageInput.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+  currentText: PropTypes.string,
+  errorMsg: PropTypes.string,
+  inputChange: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  keyPress: PropTypes.func.isRequired,
+  onSendBtnClick: PropTypes.func.isRequired
+};
 

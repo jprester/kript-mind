@@ -39,7 +39,7 @@ export const responseList = [
   {"responseId": "r1", "responseList": ["I am ok", "I am very well, thanks for asking"]},
   {"responseId": "r2", "responseList": ["greetings", "hello dear human", "Hi! How can I be of service?"]},
   {"responseId": "r3", "responseList": ["Sure I can give you some crypto information", "let me know what you are interested about", "I offer wide range of services"]},
-  {"responseId": "r4", "responseList": ["I am crypto bot", "my name is crypto bot", "it is: crypto bot"]},
+  {"responseId": "r4", "responseList": ["I am Kript-Mind, a cryptocurrency chatbot", "my name is Kript-Mind, a cryptocurrency chatbot", "it is: Kript-Mind, a cryptocurrency chatbot"]},
   {"responseId": "r5", "responseList": ["I am a cryptocurrency chatbot", "I am a bot that can give u info about cryptocurrencies"]},
   {"responseId": "r7", "responseList": ["Well, you can ask me things like: 'what is the current price of bitcoin?' 'What was ethereum price on (yyyy)-(mm)-(dd) ' etc.. "]},
   {"responseId": "r8", "responseList": ["There are many ways you can buy cryptocurrencies. The most convinient one is to use cryptocurrency exchanges and buy crypto like bitcoin or ethereum with money from your credit card or with wire transfer from the bank. Some popular exchanges that offer fiat money buying are: CoinBase.com, Cex.io or Kraken.com. Alternatively you can buy crypto from specialised crypto ATMs, or directly from people who offer to sell them."]}

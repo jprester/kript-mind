@@ -38,6 +38,14 @@ h1 {
     font-size: 32px;
 }
 
+.title-label {
+    font-size: 13px;
+    font-weight: 300;
+    bottom: 5px;
+    left: 2px;
+    position: relative;
+}
+
 .logo-link {
     text-decoration: none;
     color: #555151;
