@@ -3,7 +3,7 @@
 Cryptocurrency chatbot
 
 ## Sample App
-Heroku link: https://kript-mind.herokuapp.com/
+Netlify link: https://kript-mind.netlify.com/
 
 ### Description
  Just ask the bot some basic question related to cryptocurrencies. 
