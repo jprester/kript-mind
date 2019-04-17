@@ -5,7 +5,7 @@ const apiAddress = 'https://rest.coinapi.io';
 const apiVersion = 'v1';
 
 const coinApiAddress = 'https://rest.coinapi.io';
-const coinApiKey = 'A28420FA-918D-454B-A43C-5ABA0D249B49';
+const coinApiKey = process.env.REACT_APP_COINAPI_KEY;
 const coinApiVersion = 'v1';
 
 const stringSimilarity = require('string-similarity');

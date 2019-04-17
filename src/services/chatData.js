@@ -33,7 +33,7 @@ export const phraseList = [
 
 export const failMessages = ["Sorry but I didnt get this.", "I did not understand your message.", "What did u say?", "Unfortunately my programmer was too lazy, and he didnt anticipate this question. Try asking something else."];
 
-export const initialMessages = ["Welcome to the KriptoMind chatbot app. You can ask me for information related to cryptocurrencies. Example: 'What is current Bitcoin price?', 'What was the eth price on 12.4.2017'"];
+export const initialMessages = ["Welcome to the KriptMind chatbot app. You can ask me for information related to cryptocurrencies. Example: 'What is current Bitcoin price?', 'What was the eth price on 12.4.2017'"];
 
 export const responseList = [
   {"responseId": "r1", "responseList": ["I am ok", "I am very well, thanks for asking"]},
