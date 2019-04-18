@@ -15,7 +15,7 @@ for example:
 - "what are your functions?"
 - "How can I buy crypto?"
 
-The bot will be regulary updated with new conversational features.
+The bot will be continuously updated with new conversational features.
 
 
 #### Installation
