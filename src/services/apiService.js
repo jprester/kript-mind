@@ -1,28 +1,29 @@
 import fetch from 'node-fetch';
-import _ from 'lodash';
+import { get, find } from 'lodash';
+import dayjs from 'dayjs';
 
-import { coinApiAddress, coinApiKey, coinApiVersion} from './apiConfig';
+import { coinApiAddress } from './apiConfig';
 import { checkDateFormat } from '../helpers/utils';
 
+
 export async function getCryptoValue(cryptoType, fiatType, chooseDate) {
-  let url = `${coinApiAddress}/${coinApiVersion}/exchangerate/${cryptoType}/${fiatType}`;
 
-  const selectedDate = checkDateFormat(chooseDate);
-
-  if(chooseDate && selectedDate) {
-    url = url + `?time=${selectedDate}`;
-  } else if (chooseDate && !selectedDate) {
+  const formatedDate = checkDateFormat(chooseDate.trim());
+  if (chooseDate && !formatedDate && !dayjs(chooseDate).isValid()) {
     return;
   }
 
+  const date = chooseDate ? dayjs(formatedDate).unix() : dayjs().unix();
+  const url = `${coinApiAddress}/data/dayAvg?fsym=${cryptoType}&tsym=${fiatType}&toTs=${date}`;
+
   const cryptoValuePromise = await fetch(url, { method: 'GET', headers: {
-    'Content-Type': 'application/json',
-    'X-CoinAPI-Key': coinApiKey}
+      'Content-Type': 'application/json',
+    }
   });
 
   const cryptoValue = await cryptoValuePromise.json();
 
-  return cryptoValue.rate || '';
+  return cryptoValue[fiatType.toUpperCase()] || '';
 };
 
 
@@ -47,7 +48,7 @@ export async function getWikiText (info) {
 
   const resultObject = await cryptoTextPromise.json();
 
-  const cryptoText = _.get(_.find(resultObject.query.pages), "extract");
+  const cryptoText = get(find(resultObject.query.pages), "extract");
 
   if (cryptoText && cryptoText.length > 30) {
     return cryptoText;

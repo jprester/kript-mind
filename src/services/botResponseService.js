@@ -84,7 +84,6 @@ async function getCryptoPriceTime (data) {
   let cryptoValue;
 
   cryptoValue = await getCryptoValue(cryptoId, 'USD', time.category === "chooseDate" ? time.keyword : "");
-
   if (!cryptoValue) {
     return `Apologies, but I wasnt able to get that information for ${data.currency.category}. It is possible that there is no price for that date. Also check if the date is in correct format.`;
   }
