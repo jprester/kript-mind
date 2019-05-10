@@ -19,7 +19,7 @@ export const checkforErrors = text => {
     return "Please write text.";
   }
 
-  if(/[~`!#$%\^&*+=\[\]\\';/{}|\\:]/g.test(text)) {
+  if(/[~`!#$%^&*+=[\]\\';/{}|\\:]/g.test(text)) {
     return "Please dont use forbidden characters. (/,*, +, `, {, (, < ....) ";
   }
 

@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { get, find } from 'lodash';
 import dayjs from 'dayjs';
 
-import { coinApiAddress } from './apiConfig';
+import { cryptoCompareAddress } from './apiConfig';
 import { checkDateFormat } from '../helpers/utils';
 
 
@@ -14,12 +14,11 @@ export async function getCryptoValue(cryptoType, fiatType, chooseDate) {
   }
 
   const date = chooseDate ? dayjs(formatedDate).unix() : dayjs().unix();
-  const url = `${coinApiAddress}/data/dayAvg?fsym=${cryptoType}&tsym=${fiatType}&toTs=${date}`;
+  const url = `${cryptoCompareAddress}/data/dayAvg?fsym=${cryptoType}&tsym=${fiatType}&toTs=${date}`;
 
-  const cryptoValuePromise = await fetch(url, { method: 'GET', headers: {
-      'Content-Type': 'application/json',
-    }
-  });
+  const cryptoValuePromise = await fetch(url,
+    { method: 'GET', headers: {'Content-Type': 'application/json'}}
+  );
 
   const cryptoValue = await cryptoValuePromise.json();
 
