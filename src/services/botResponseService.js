@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 import stringSimilarity from 'string-similarity';
 
 import {
@@ -13,10 +13,11 @@ import {
 
 import { getCryptoValue, getWikiText } from './apiService';
 import { randomizeArrayReturn } from '../helpers/utils';
-import { regx1, regx2, regx3, regx4 } from '../helpers/constants';
+import { dateRegex1, dateRegex2, dateRegex3 } from '../helpers/constants';
 
 function phraseIsQuestion(phrase) {
   let lastElement = phrase.substr(phrase.length - 1);
+
   if(lastElement === "?") {
     return true;
   }
@@ -42,39 +43,38 @@ function stringSimilaritySearch(phraseToAnalyse) {
 async function categorySearch(semanticObject) {
   let time = semanticObject.time || {};
   let action = semanticObject.action || {};
-  let currency = semanticObject.currency || {};
+  let subject = semanticObject.subject || {};
 
-  if(!_.isEmpty(time) && currency.category) {
+  if(!_.isEmpty(time) && subject.category) {
     return await getCryptoPriceTime(semanticObject);
-  } else if (currency.category && action.category) {
+  } else if (subject.category && action.category) {
     try {
-      return await getWikiText(currency.category);
+      return await getWikiText(subject.keyword);
     } catch(err) {
       console.error(err);
       return "Sorry, I couldnt get this information.";
-
     }
-  } else if (currency.category) {
-    return "Sorry, I dont understand the question. However, I did notice that u mentioned " + currency.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + currency.category + " price?, 'How much was " + currency.category + " price on x.date' or 'what is " + currency.category + " ?' ... ";
+  } else if (subject.category) {
+    return "Sorry, I don't understand the question. However, I did notice that u mentioned " + subject.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + subject.category + " price?, 'How much was " + subject.category + " price on x.date' or 'what is " + subject.category + " ?' ... ";
   } else {
     return;
   }
 };
 
-async function getCryptoPriceTime (data) {
+async function getCryptoPriceTime(data) {
   if (!data) {
     return;
   }
 
   data = data || {};
 
-  if (!data.time || !cryptoCurrencySymbols[data.currency.category]) {
+  if (!data.time || !cryptoCurrencySymbols[data.subject.category]) {
     return;
   }
 
   const time = data.time || {};
 
-  const cryptoName = cryptoCurrencySymbols[data.currency.category];
+  const cryptoName = cryptoCurrencySymbols[data.subject.category];
 
   if (!cryptoName) {
     return;
@@ -85,7 +85,7 @@ async function getCryptoPriceTime (data) {
 
   cryptoValue = await getCryptoValue(cryptoId, 'USD', time.category === "chooseDate" ? time.keyword : "");
   if (!cryptoValue) {
-    return `Apologies, but I wasnt able to get that information for ${data.currency.category}. It is possible that there is no price for that date. Also check if the date is in correct format.`;
+    return `Apologies, but I wasn't able to get that information for ${data.subject.category}. It is possible that there is no price for that date. Also check if the date is in correct format.`;
   }
 
   let tense = "";
@@ -98,17 +98,16 @@ async function getCryptoPriceTime (data) {
     startText = "On " + startText;
   }
 
-  return `${startText} price of ${data.currency.category} ${tense} ${Math.round(cryptoValue * 100) / 100} $`;
+  return `${startText} price of ${data.subject.category} ${tense} ${Math.round(cryptoValue * 100) / 100} $`;
 }
 
-export async function responseAlogrithm(text) {
+export async function responseAlgorithm(text) {
   const semanticObject = createSemanticObject(text);
 
   const categorySearchResult = await categorySearch(semanticObject);
   const stringSimilaritySearchResult = await stringSimilaritySearch(text);
 
-  const finalResponse = stringSimilaritySearchResult || categorySearchResult || randomizeArrayReturn(failMessages) || "I didnt understand that, sorry.";
-  ;
+  const finalResponse = stringSimilaritySearchResult || categorySearchResult || randomizeArrayReturn(failMessages) || "I did not understand that, sorry.";
 
   return finalResponse;
 }
@@ -121,7 +120,7 @@ function createSemanticObject(phrase) {
       time: searchResult(timeCollection, cleanString, true),
       action: searchResult(actionsCollection, cleanString) || "",
       isQuestion: phraseIsQuestion(phrase),
-      currency: searchResult(cryptoCurrencyCollection, cleanString) || "",
+      subject: searchResult(cryptoCurrencyCollection, cleanString) || "",
       contentType: "sentence" || "list" || "table"
     };
   }
@@ -132,13 +131,13 @@ function scanForDate(text) {
   let dateMatch;
 
   dateMatch = _.find(textArray, (value) => {
-    return value.match(regx1) || value.match(regx2) || value.match(regx3) || value.match(regx4);
+    return value.match(dateRegex1) || value.match(dateRegex2) || value.match(dateRegex3);
   }) || "";
 
   return dateMatch;
 }
 
-function searchResult (categoryCollection, phrase, searchDate) {
+function searchResult(categoryCollection, phrase, searchDate) {
   let category;
   let result = {};
 

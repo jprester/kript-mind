@@ -1,4 +1,4 @@
-import { regx1 } from './constants';
+import { dateRegex1 } from './constants';
 
 export const checkDateFormat = (date) => {
   if(!date) {
@@ -9,7 +9,7 @@ export const checkDateFormat = (date) => {
   let formattedDate;
   let newDate;
 
-  if(date.match(regx1)) {
+  if(date.match(dateRegex1)) {
     return date;
   }
 
@@ -42,7 +42,7 @@ export const checkDateFormat = (date) => {
 
   newDate = dateArray.join("-");
 
-  if (newDate.match(regx1)) {
+  if (newDate.match(dateRegex1)) {
     return newDate;
   }
 

@@ -119,18 +119,18 @@ async function categorySearch(semanticObject) {
 
   let time = semanticObject.time || {};
   let action = semanticObject.action || {};
-  let currency = semanticObject.currency || {};
+  let subject = semanticObject.subject || {};
 
   console.log("----- THIS IS THE ACTION: ", action);
 
-  console.log("----- THIS IS THE CURRENCY: ", currency);
+  console.log("----- THIS IS THE CURRENCY: ", subject);
 
-  if(!_.isEmpty(time) && currency.category) {
+  if(!_.isEmpty(time) && subject.category) {
     return await getCryptoPriceTime(semanticObject);
-  } else if (currency.category && action.category) {
-    return getWikiText(currency.category);
-  } else if (currency.category) {
-    return "Sorry, I dont understand the question. However, I did notice that u mentioned " + currency.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + currency.category + " price?, 'How much was " + currency.category + " price on x.date' or 'what is " + currency.category + " ?' ... ";
+  } else if (subject.category && action.category) {
+    return getWikiText(subject.category);
+  } else if (subject.category) {
+    return "Sorry, I dont understand the question. However, I did notice that u mentioned " + subject.category + " in your question so I recommend you ask more specific questions. For example: 'what is the current " + subject.category + " price?, 'How much was " + subject.category + " price on x.date' or 'what is " + subject.category + " ?' ... ";
   } else {
     return;
   }
@@ -232,7 +232,7 @@ async function getCryptoPriceTime (data) {
   let time = data.time || {};
   console.log("data structure: " + JSON.stringify(data));
 
-  const cryptoId = cryptoCurrencySymbols[data.currency.category].toUpperCase();
+  const cryptoId = cryptoCurrencySymbols[data.subject.category].toUpperCase();
   let cryptoValue;
 
   console.log(time);
@@ -244,7 +244,7 @@ async function getCryptoPriceTime (data) {
   }
 
   if (!cryptoValue) {
-    return `Apologies, but I wasnt able to get that information for ${data.currency.category}. It is possible that there is no price for that date. Also check if the date is in correct format.`;
+    return `Apologies, but I wasnt able to get that information for ${data.subject.category}. It is possible that there is no price for that date. Also check if the date is in correct format.`;
   }
 
   let tense = "";
@@ -257,10 +257,10 @@ async function getCryptoPriceTime (data) {
     startText = "On " + startText;
   }
 
-  return `${startText} price of ${data.currency.category} ${tense} ${cryptoValue} `;
+  return `${startText} price of ${data.subject.category} ${tense} ${cryptoValue} `;
 }
 
-async function responseAlogrithm(text) {
+async function responseAlgorithm(text) {
   const semanticObject = createSemanticObject(text);
 
   const categorySearchResult = await categorySearch(semanticObject);
@@ -289,7 +289,7 @@ function createSemanticObject(phrase) {
       time: searchResult(timeCollection, cleanString, true),
       action: searchResult(actionsCollection, cleanString) || "",
       isQuestion: phraseIsQuestion(phrase),
-      currency: searchResult(cryptoCurrencyCollection, cleanString) || "",
+      subject: searchResult(cryptoCurrencyCollection, cleanString) || "",
       contentType: "sentence" || "list" || "table"
     };
   }
@@ -345,7 +345,7 @@ function searchResult (categoryCollection, phrase, searchDate) {
   return result;
 }
 
-responseAlogrithm(teststring);
+responseAlgorithm(teststring);
 
 /*
     List of responses:

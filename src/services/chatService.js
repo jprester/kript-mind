@@ -1,16 +1,15 @@
-import { options } from '../helpers/constants';
-
-import { responseAlogrithm } from './botResponseService';
+import { specialCharRegex, options } from '../helpers/constants';
+import { responseAlgorithm } from './botResponseService';
 
 export async function parsePhrase(phrase) {
   if(!phrase || typeof phrase !== "string") {
     return "message was wrong";
   }
 
-  return responseAlogrithm(phrase);
+  return responseAlgorithm(phrase);
 }
 
-export const checkforErrors = text => {
+export const checkForErrors = text => {
   if(!text) {
     return "The message is empty.";
   }
@@ -19,8 +18,8 @@ export const checkforErrors = text => {
     return "Please write text.";
   }
 
-  if(/[~`!#$%^&*+=[\]\\';/{}|\\:]/g.test(text)) {
-    return "Please dont use forbidden characters. (/,*, +, `, {, (, < ....) ";
+  if(specialCharRegex.test(text)) {
+    return "Please don't use forbidden characters. (/,*, +, {, (, < ....)";
   }
 
   if(text.length < options.phrase_size.min_length || text.length > options.phrase_size.max_length ) {

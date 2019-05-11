@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './App.css';
-import { getMessage, checkforErrors } from './services/chatService';
+import { getMessage, checkForErrors } from './services/chatService';
 import MessageInput from './components/messageInput';
 import MessageList from './components/messageList/MessageList';
 import Header from './components/header/';
@@ -86,7 +86,7 @@ class App extends React.Component {
 
   onSendChatClick () {
     const message = this.state.currentMessage;
-    const errorCheck = checkforErrors(message);
+    const errorCheck = checkForErrors(message);
 
     if(errorCheck) {
       this.setState({

@@ -7,8 +7,8 @@ import { checkDateFormat } from '../helpers/utils';
 
 
 export async function getCryptoValue(cryptoType, fiatType, chooseDate) {
-
   const formatedDate = checkDateFormat(chooseDate.trim());
+
   if (chooseDate && !formatedDate && !dayjs(chooseDate).isValid()) {
     return;
   }
@@ -36,8 +36,10 @@ export async function getCryptoList() {
   return cryptoList;
 };
 
-export async function getWikiText (info) {
-  let url = `https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&exintro&explaintext&exsentences=5&exsectionformat=raw&redirects=1&titles=${info}`;
+export async function getWikiText(query) {
+  const wikiQuery = (query).replace(/ /g, '_');
+
+  const url = `https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&exintro&explaintext&exsentences=5&exsectionformat=raw&redirects=1&titles=${wikiQuery}`;
 
   const cryptoTextPromise = await fetch(url, { method: 'GET',
     headers: {
@@ -51,7 +53,7 @@ export async function getWikiText (info) {
 
   if (cryptoText && cryptoText.length > 30) {
     return cryptoText;
-  } else {
-    return `I didnt found anything about ${info}, sorry.`;
   }
+
+  return `I didn't found anything about ${query}, sorry.`;
 };

@@ -31,7 +31,7 @@ export const phraseList = [
   {"phraseId": "p27", "text": "how can I buy ethereum", "responseId": "r8"},
 ];
 
-export const failMessages = ["Sorry but I didnt get this.", "I did not understand your message.", "What did u say?", "Unfortunately my programmer was too lazy, and he didnt anticipate this question. Try asking something else."];
+export const failMessages = ["Sorry but I didn't get this.", "I did not understand your message.", "What did u say?", "Unfortunately my programmer was too lazy, and he didn't anticipate this question. Try asking something else."];
 
 export const initialMessages = ["Welcome to the KriptMind chatbot app. You can ask me for information related to cryptocurrencies. Example: 'What is current Bitcoin price?', 'What was the eth price on 12.4.2017'"];
 
@@ -42,7 +42,7 @@ export const responseList = [
   {"responseId": "r4", "responseList": ["I am Kript-Mind, a cryptocurrency chatbot", "my name is Kript-Mind, a cryptocurrency chatbot", "it is: Kript-Mind, a cryptocurrency chatbot"]},
   {"responseId": "r5", "responseList": ["I am a cryptocurrency chatbot", "I am a bot that can give u info about cryptocurrencies"]},
   {"responseId": "r7", "responseList": ["Well, you can ask me things like: 'what is the current price of bitcoin?' 'What was ethereum price on (yyyy)-(mm)-(dd) ' etc.. "]},
-  {"responseId": "r8", "responseList": ["There are many ways you can buy cryptocurrencies. The most convinient one is to use cryptocurrency exchanges and buy crypto like bitcoin or ethereum with money from your credit card or with wire transfer from the bank. Some popular exchanges that offer fiat money buying are: CoinBase.com, Cex.io or Kraken.com. Alternatively you can buy crypto from specialised crypto ATMs, or directly from people who offer to sell them."]}
+  {"responseId": "r8", "responseList": ["There are many ways you can buy cryptocurrencies. The most convenient one is to use cryptocurrency exchanges and buy crypto like bitcoin or ethereum with money from your credit card or with wire transfer from the bank. Some popular exchanges that offer fiat money buying are: CoinBase.com, Cex.io or Kraken.com. Alternatively you can buy crypto from specialized crypto ATMs, or directly from people who offer to sell them."]}
 ];
 
 export const cryptoCurrencyCollection = [
@@ -66,7 +66,8 @@ export const cryptoCurrencyCollection = [
   {"binance_coin": ["BNB", "bnb", "binance coin"]},
   {"nem": ["nem", "xem"]},
   {"vechain": ["vechain", "cet"]},
-  {"dogecoin": ["dogecoin", "doge"]}
+  {"dogecoin": ["dogecoin", "doge"]},
+  {"people": ["satoshi nakamoto", "roger ver", "vitalik buterin"]}
 ];
 
 export const cryptoCurrencySymbols = {
@@ -93,7 +94,7 @@ export const cryptoCurrencySymbols = {
 
 export const actionsCollection = [
   {"getPrice": ["price", "value", "worth", "pay"]},
-  {"getInfo": ["about", "info", "information", "what is"]}
+  {"getInfo": ["about", "info", "information", "what is", "who is"]}
 ];
 
 export const timeCollection = [
