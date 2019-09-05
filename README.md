@@ -1,6 +1,6 @@
 # kript-mind
 
-Cryptocurrency chatbot
+Cryptocurrency chatbot 2018
 
 ## Sample App
 Netlify link: https://kript-mind.netlify.com/
