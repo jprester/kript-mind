@@ -1,23 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import './App.css';
-import { getMessage, checkForErrors } from './services/chatService';
-import MessageInput from './components/messageInput';
-import MessageList from './components/messageList/MessageList';
-import Header from './components/header/';
-import Footer from './components/footer/';
-import { msgAuthor } from './helpers/constants.js';
-import { initialMessages } from './services/chatData.js';
+import "./App.css";
+import { getMessage, checkForErrors } from "./services/chatService";
+import MessageInput from "./components/messageInput";
+import MessageList from "./components/messageList/MessageList";
+import Header from "./components/header/";
+import Footer from "./components/footer/";
+import { msgAuthor } from "./helpers/constants.js";
+import { initialMessages } from "./services/chatData.js";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
-      errorMsg: '',
-      currentMessage: '',
-      messages: [],
+      errorMsg: "",
+      currentMessage: "",
+      messages: []
     };
 
     this.onSendChatClick = this.onSendChatClick.bind(this);
@@ -26,25 +26,33 @@ class App extends React.Component {
 
   onInputText(event) {
     this.setState({
-      currentMessage: event.target.value,
+      currentMessage: event.target.value
     });
-  };
+  }
 
-  async addMessage (source, text) {
+  async addMessage(source, text) {
     const lastItem = this.state.messages[this.state.messages.length - 1];
     const time = new Date();
-    const date = time.getUTCDate() + "/" + (time.getMonth() + 1) + "/" + time.getFullYear();
+    const date =
+      time.getUTCDate() +
+      "/" +
+      (time.getMonth() + 1) +
+      "/" +
+      time.getFullYear();
     const hourAndMinute = time.getHours() + ":" + time.getMinutes();
 
     this.setState({
       currentMessage: "",
-      messages: [...this.state.messages, {
-        id: lastItem ? lastItem.id + 1 : 0,
-        content: text,
-        date: date,
-        hourAndMinute: hourAndMinute,
-        author: source || msgAuthor.bot
-      }]
+      messages: [
+        ...this.state.messages,
+        {
+          id: lastItem ? lastItem.id + 1 : 0,
+          content: text,
+          date: date,
+          hourAndMinute: hourAndMinute,
+          author: source || msgAuthor.bot
+        }
+      ]
     });
   }
 
@@ -54,10 +62,10 @@ class App extends React.Component {
     }
   }
 
-  addInitialMessage () {
+  addInitialMessage() {
     if (!this.state.messages.length) {
       this.setState({
-        errorMsg: '',
+        errorMsg: "",
         loading: true
       });
       setTimeout(() => {
@@ -75,7 +83,9 @@ class App extends React.Component {
 
   async botResponse() {
     if (this.state.messages[this.state.messages.length - 1]) {
-      const botMessage = await getMessage(this.state.messages[this.state.messages.length - 1].content);
+      const botMessage = await getMessage(
+        this.state.messages[this.state.messages.length - 1].content
+      );
       this.addMessage(msgAuthor.bot, botMessage);
     }
 
@@ -84,11 +94,11 @@ class App extends React.Component {
     });
   }
 
-  onSendChatClick () {
+  onSendChatClick() {
     const message = this.state.currentMessage;
     const errorCheck = checkForErrors(message);
 
-    if(errorCheck) {
+    if (errorCheck) {
       this.setState({
         errorMsg: errorCheck
       });
@@ -97,16 +107,16 @@ class App extends React.Component {
     }
 
     this.setState({
-      errorMsg: '',
+      errorMsg: "",
       loading: true
     });
 
     this.addMessage(msgAuthor.user, message);
     this.responseDelay();
-  };
+  }
 
-  handleKeyPress (event) {
-    if(event.key === 'Enter'){
+  handleKeyPress(event) {
+    if (event.key === "Enter") {
       event.preventDefault();
       this.onSendChatClick();
     }
@@ -114,7 +124,7 @@ class App extends React.Component {
 
   displayMessages() {
     if (this.state.messages.length > 0) {
-      return <MessageList messages={ this.state.messages }/>;
+      return <MessageList messages={this.state.messages} />;
     }
   }
 
@@ -123,17 +133,15 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <div className="chat-content">
-          <div className="main-container">
-            {this.displayMessages()}
-          </div>
+          <div className="main-container">{this.displayMessages()}</div>
         </div>
         <MessageInput
-          inputChange={ this.onInputText.bind(this) }
-          keyPress={ this.handleKeyPress }
-          currentText={ this.state.currentMessage }
-          onSendBtnClick={ this.onSendChatClick }
-          errorMsg= { this.state.errorMsg }
-          isLoading={ this.state.loading }
+          inputChange={this.onInputText.bind(this)}
+          keyPress={this.handleKeyPress}
+          currentText={this.state.currentMessage}
+          onSendBtnClick={this.onSendChatClick}
+          errorMsg={this.state.errorMsg}
+          isLoading={this.state.loading}
         />
         <Footer />
       </div>
